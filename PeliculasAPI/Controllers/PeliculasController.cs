@@ -236,7 +236,7 @@ namespace PeliculasAPI.Controllers
             }
         }
 
-        [HttpPut("id:int", Name = "actualizarPelicula")]
+        [HttpPut("{id:int}", Name = "actualizarPelicula")]
         public async Task<ActionResult> Put(int id, [FromForm] PeliculaCreacionDTO peliculaCreacionDTO)
         {
             var peliculaDB = await context.Peliculas

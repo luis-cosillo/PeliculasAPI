@@ -33,12 +33,12 @@ namespace PeliculasAPI
 
             services.AddSingleton<GeometryFactory>(NtsGeometryServices.Instance.CreateGeometryFactory(srid: 4326));
             services.AddSingleton(provider =>
-          
-               new MapperConfiguration( config =>
-               {
-                   var geometryFactory = provider.GetRequiredService<GeometryFactory>();
-                   config.AddProfile(new AutoMappersProfiles(geometryFactory));
-               }).CreateMapper()
+
+               new MapperConfiguration(config =>
+              {
+                  var geometryFactory = provider.GetRequiredService<GeometryFactory>();
+                  config.AddProfile(new AutoMappersProfiles(geometryFactory));
+              }).CreateMapper()
             );
 
 
@@ -66,7 +66,8 @@ namespace PeliculasAPI
             }
 
             app.UseSwagger();
-            app.UseSwaggerUI(c => {
+            app.UseSwaggerUI(c =>
+            {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebApiAutores v1");
             });
 
