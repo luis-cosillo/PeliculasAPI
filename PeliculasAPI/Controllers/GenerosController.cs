@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PeliculasAPI.Dtos;
@@ -80,6 +82,7 @@ namespace PeliculasAPI.Controllers
         }
 
         [HttpDelete("{id:int}", Name = "eliminarGenero")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
         public async Task<ActionResult> Delete(int id)
         {
             //var existe = await context.Generos.AnyAsync( x => x.Id == id);
